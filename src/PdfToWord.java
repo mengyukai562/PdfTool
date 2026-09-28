@@ -18,9 +18,9 @@ public class PdfToWord {
 	// 3、如果是大文件，需要对子pdf文件一个一个进行转化
 	 String docPath = "./doc/";
 
-	public  String pdftoword(String  srcPath) {
+	public  String pdftoword(String  srcPath, String desPath) {
 		// 4、最终生成的doc所在的目录，默认是和引入的一个地方，开源时对外提供下载的接口。
-		String desPath = srcPath.substring(0, srcPath.length()-4)+".docx";
+		if(desPath == null || desPath.trim().isEmpty()) desPath = srcPath.substring(0, srcPath.length()-4)+".docx";
 		boolean result = false;
 		try {
 			// 0、判断输入的是否是pdf文件
@@ -81,7 +81,7 @@ public class PdfToWord {
 		File f = new File(splitPath);
 		File f1 = new File(docPath);
 		if(!f.exists() )  f.mkdirs();
-		if(!f.exists() )  f1.mkdirs();
+		if(!f1.exists() )  f1.mkdirs();
 		return true;	    
 	}
 
